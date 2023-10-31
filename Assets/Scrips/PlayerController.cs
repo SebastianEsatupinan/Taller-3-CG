@@ -39,17 +39,17 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             Anim.SetBool("Jumping", false);
-            Anim.SetBool("Fall", false);
+            //Anim.SetBool("Fall", false);
 
             if (Input.GetButtonDown("Jump"))
             {
                 Jump();
             }
-    }
-        else
-        {
-            Anim.SetBool("Fall", true);
         }
+        //else
+        //{
+        //    Anim.SetBool("Fall", true);
+        //}
 
 
     }
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         Anim.SetBool("Jumping", true);
-        rgbd.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);      
+        rgbd.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
     }
+
 }
