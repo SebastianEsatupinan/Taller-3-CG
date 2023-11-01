@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float x, y;
     public float JumpForce = 8.0f;
     private bool isGrounded = true;
-
+    private bool isInteracting = false;
 
     private Rigidbody rgbd;
 
@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(0, x * Time.deltaTime * RotationSpeed, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * MovementSpeed);
+        if (!isInteracting) // Solo permite mover al jugador si no está interactuando
+        {
+            transform.Rotate(0, x * Time.deltaTime * RotationSpeed, 0);
+            transform.Translate(0, 0, y * Time.deltaTime * MovementSpeed);
+        }
     }
 
     void Update()
@@ -50,7 +53,10 @@ public class PlayerController : MonoBehaviour
         //{
         //    Anim.SetBool("Fall", true);
         //}
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            Agarrar();  
+        }
 
     }
 
@@ -58,6 +64,33 @@ public class PlayerController : MonoBehaviour
     {
         Anim.SetBool("Jumping", true);
         rgbd.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+    }
+
+    public void Agarrar()
+    {
+        if (!isInteracting)
+        {
+            // Aquí deberías agregar la lógica para detectar si el jugador está cerca de un objeto interactuable y si hace clic en él.
+            // Puedes usar raycasts o colisiones para detectar la interacción con el objeto.
+
+            // Si el jugador puede interactuar con el objeto, activa la animación y deshabilita el movimiento.
+            Anim.SetBool("Interactua", true);
+            isInteracting = true;
+            StartCoroutine(DetenerAgarreDespuesDeTiempo(3.5f));
+        }
+    }
+    IEnumerator DetenerAgarreDespuesDeTiempo(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+
+        // Detén la animación de agarre y habilita el movimiento.
+        TerminarAgarre();
+    }
+    // Agrega un método para finalizar la animación de agarrar y habilitar el movimiento nuevamente.
+    public void TerminarAgarre()
+    {
+        Anim.SetBool("Interactua", false);
+        isInteracting = false;
     }
 
 }
