@@ -70,15 +70,27 @@ public class PlayerController : MonoBehaviour
     {
         if (!isInteracting)
         {
-            // Aquí deberías agregar la lógica para detectar si el jugador está cerca de un objeto interactuable y si hace clic en él.
-            // Puedes usar raycasts o colisiones para detectar la interacción con el objeto.
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+            {
+                if (hit.collider.tag == "Cafe")
+                {
+                    // Eliminar el objeto
+                    Destroy(hit.collider.gameObject);
 
-            // Si el jugador puede interactuar con el objeto, activa la animación y deshabilita el movimiento.
-            Anim.SetBool("Interactua", true);
-            isInteracting = true;
-            StartCoroutine(DetenerAgarreDespuesDeTiempo(3.5f));
+                    // Sumar al contador
+                    ContadorCafe.CafeCount++;
+
+                    // Aquí va el código para interactuar con el objeto
+                    Anim.SetBool("Interactua", true);
+                    isInteracting = true;
+                    StartCoroutine(DetenerAgarreDespuesDeTiempo(3.5f));
+                    Debug.Log("Objetos Cafe alzados: " + ContadorCafe.CafeCount);
+                }
+            }
         }
     }
+
     IEnumerator DetenerAgarreDespuesDeTiempo(float tiempo)
     {
         yield return new WaitForSeconds(tiempo);
