@@ -7,7 +7,7 @@ public class CambioDeEscena : MonoBehaviour
     public string nombreDeEscena;
 
     // Llamado cuando ocurra algún evento que desee cambiar de escena
-    public void CambiarEscena()
+    public void CambiarEscena(string v)
     {
         // Cargar la escena por su nombre
         SceneManager.LoadScene(nombreDeEscena);

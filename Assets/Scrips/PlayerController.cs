@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +13,8 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 8.0f;
     private bool isGrounded = true;
     private bool isInteracting = false;
-
+    public TextMeshProUGUI cafeCountText;
+    public CambioDeEscena cambioDeEscena;
     private Rigidbody rgbd;
 
     void Start()
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
 
                     // Sumar al contador
                     ContadorCafe.CafeCount++;
+                    cafeCountText.text = "" + ContadorCafe.CafeCount;
+                    if (ContadorCafe.CafeCount >= 10)
+                    {
+                        CambiarEscena("Nivel2");
+                    }
 
                     // Aquí va el código para interactuar con el objeto
                     Anim.SetBool("Interactua", true);
@@ -103,6 +111,10 @@ public class PlayerController : MonoBehaviour
     {
         Anim.SetBool("Interactua", false);
         isInteracting = false;
+    }
+    public void CambiarEscena(string nombreDeEscena)
+    {
+        SceneManager.LoadScene(nombreDeEscena);
     }
 
 }
