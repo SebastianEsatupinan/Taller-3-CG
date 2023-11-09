@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UnderwaterCamera : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class UnderwaterCamera : MonoBehaviour
         // Si el objeto en el trigger es el agua
         if (other.gameObject == waterObject.gameObject)
         {
-            // Cambiamos el color de la c�mara
+            // Cambiamos el color de la c疥ara
             mainCamera.backgroundColor = underwaterColor;
 
         }
@@ -29,9 +29,14 @@ public class UnderwaterCamera : MonoBehaviour
         // Si el objeto en el trigger es el agua
         if (other.gameObject == waterObject.gameObject)
         {
-            // Restauramos el color de la c�mara
+            // Restauramos el color de la c疥ara
             mainCamera.backgroundColor = Color.white;
 
         }
     }
 }
+
+//sebastian Estupiñán Sánchez #2200361
+//Juan David Carvajal #2221496
+//David Alejandro Perez #2201374
+//Miguel Diuza 2215595

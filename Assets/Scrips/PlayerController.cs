@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isInteracting) // Solo permite mover al jugador si no está interactuando
+        if (!isInteracting) // Solo permite mover al jugador si no estãƒ»interactuando
         {
             transform.Rotate(0, x * Time.deltaTime * RotationSpeed, 0);
             transform.Translate(0, 0, y * Time.deltaTime * MovementSpeed);
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
                         CambiarEscena("Nivel2");
                     }
 
-                    // Aquí va el código para interactuar con el objeto
+                    // Aquãƒ»va el cî‰˜igo para interactuar con el objeto
                     Anim.SetBool("Interactua", true);
                     isInteracting = true;
                     StartCoroutine(DetenerAgarreDespuesDeTiempo(3.5f));
@@ -103,10 +103,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempo);
 
-        // Detén la animación de agarre y habilita el movimiento.
+        // Deté§­ la animaciî‰¢ de agarre y habilita el movimiento.
         TerminarAgarre();
     }
-    // Agrega un método para finalizar la animación de agarrar y habilitar el movimiento nuevamente.
+    // Agrega un mé¨odo para finalizar la animaciî‰¢ de agarrar y habilitar el movimiento nuevamente.
     public void TerminarAgarre()
     {
         Anim.SetBool("Interactua", false);
@@ -118,3 +118,9 @@ public class PlayerController : MonoBehaviour
     }
 
 }
+
+
+//sebastian EstupiÃ±Ã¡n SÃ¡nchez #2200361
+//Juan David Carvajal #2221496
+//David Alejandro Perez #2201374
+//Miguel Diuza 2215595

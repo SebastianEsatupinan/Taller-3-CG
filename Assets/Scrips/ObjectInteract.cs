@@ -1,7 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // A�ade esta l�nea para acceder a los componentes de UI
+using UnityEngine.UI; // Ade esta l匤ea para acceder a los componentes de UI
 
 public class ObjectInteract : MonoBehaviour
 {
@@ -35,3 +35,7 @@ public class ObjectInteract : MonoBehaviour
         }
     }
 }
+//sebastian Estupiñán Sánchez #2200361
+//Juan David Carvajal #2221496
+//David Alejandro Perez #2201374
+//Miguel Diuza 2215595
